@@ -121,7 +121,7 @@ void ofxTextAnimation::draw(int _x, int _y)
                         ofNoFill();
                         ofSetLineWidth(1.0);
                         for(int i = 0; i < paths.size(); i++ ){
-							std::vector<ofPolyline> p = paths[i].getOutline();
+                            std::vector<ofPolyline> p = paths[i].getOutline();
                             for( int j = 0; j < p.size(); j++ ){
                                 p[j] = p[j].getResampledByCount(50);
                                 ofBeginShape();
@@ -170,7 +170,7 @@ void ofxTextAnimation::draw(int _x, int _y)
                     }
                     else{
                         int all_point = 0;
-						std::vector<ofPath> paths = font.getStringAsPoints(text);
+                        std::vector<ofPath> paths = font.getStringAsPoints(text);
                         for( int i = 0; i < paths.size(); i++ ){
                             all_point = all_point + 50*paths[i].getOutline().size();
                         }
@@ -181,7 +181,7 @@ void ofxTextAnimation::draw(int _x, int _y)
                         ofNoFill();
                         ofSetLineWidth(1.0);
                         for(int i = 0; i < paths.size(); i++ ){
-							std::vector<ofPolyline> p = paths[i].getOutline();
+                            std::vector<ofPolyline> p = paths[i].getOutline();
                             for( int j = 0; j < p.size(); j++ ){
                                 p[j] = p[j].getResampledByCount(50);
                                 ofBeginShape();

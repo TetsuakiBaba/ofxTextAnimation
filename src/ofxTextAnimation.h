@@ -25,8 +25,8 @@ class ofxTextAnimation{
 public:
     ofxTextAnimation();
     ~ofxTextAnimation();
-	bool load(string _str_font, int _size);
-	bool loadFont(string _str_font, int _size);
+    bool load(string _str_font, int _size);
+    bool loadFont(string _str_font, int _size);
     void setText(string _text);
     void setLoop(bool _loop_status);
     void setAnimate(int _type, int _ms_in, int _ms_show, int _ms_out);
