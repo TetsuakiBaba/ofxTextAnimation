@@ -23,9 +23,14 @@ void ofxTextAnimation::setColor(ofColor _color)
 {
     color = _color;
 }
-void ofxTextAnimation::loadFont(string _str_font, int _size)
-{
-    font.load(_str_font, _size, true, true, true);
+
+
+bool ofxTextAnimation::load(string _str_font, int _size) {
+	return font.load(_str_font, _size, true, true, true);
+}
+
+bool ofxTextAnimation::loadFont(string _str_font, int _size) {
+    return font.load(_str_font, _size, true, true, true);
 }
 
 void ofxTextAnimation::setLoop(bool _loop_status)
@@ -105,7 +110,7 @@ void ofxTextAnimation::draw(int _x, int _y)
                     }
                     else{
                         int all_point = 0;
-                        vector<ofTTFCharacter>paths = font.getStringAsPoints(text);
+                        std::vector<ofPath>paths = font.getStringAsPoints(text);
                         for( int i = 0; i < paths.size(); i++ ){
                             all_point = all_point + 50*paths[i].getOutline().size();
                         }
@@ -116,7 +121,7 @@ void ofxTextAnimation::draw(int _x, int _y)
                         ofNoFill();
                         ofSetLineWidth(1.0);
                         for(int i = 0; i < paths.size(); i++ ){
-                            vector<ofPolyline>p = paths[i].getOutline();
+                            std::vector<ofPolyline> p = paths[i].getOutline();
                             for( int j = 0; j < p.size(); j++ ){
                                 p[j] = p[j].getResampledByCount(50);
                                 ofBeginShape();
@@ -165,7 +170,7 @@ void ofxTextAnimation::draw(int _x, int _y)
                     }
                     else{
                         int all_point = 0;
-                        vector<ofTTFCharacter>paths = font.getStringAsPoints(text);
+                        std::vector<ofPath> paths = font.getStringAsPoints(text);
                         for( int i = 0; i < paths.size(); i++ ){
                             all_point = all_point + 50*paths[i].getOutline().size();
                         }
@@ -176,7 +181,7 @@ void ofxTextAnimation::draw(int _x, int _y)
                         ofNoFill();
                         ofSetLineWidth(1.0);
                         for(int i = 0; i < paths.size(); i++ ){
-                            vector<ofPolyline>p = paths[i].getOutline();
+                            std::vector<ofPolyline> p = paths[i].getOutline();
                             for( int j = 0; j < p.size(); j++ ){
                                 p[j] = p[j].getResampledByCount(50);
                                 ofBeginShape();
@@ -268,6 +273,10 @@ void ofxTextAnimation::play()
 {
     status = OFX_TEXT_ANIMATION_STATUS_IN;
     time_begin = ofGetElapsedTimeMillis();
+}
+
+void ofxTextAnimation::stop() {
+	time_begin = ms_in + ms_show;
 }
 
 int ofxTextAnimation::getTimeMillis()
